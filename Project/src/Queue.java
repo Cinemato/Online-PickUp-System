@@ -87,7 +87,7 @@ public class Queue
 			OrderHistory.textArea.setText("");
 			while(current != null)
 			{
-				System.out.println(current.getOrder().toString());
+				System.out.println(current.getOrder().toString()); //Debugging
 				OrderHistory.textArea.append(current.getOrder().toString());
 				current = current.getLink();
 			}

@@ -21,7 +21,6 @@ public class OrderPage {
 	JFrame frmOrderPage;
 	static JLabel lblprice;
 	static JTextArea textArea;
-	static LinkedList<Product> P;
 	static Tree t;
 	private final JLabel lblOrderPage = new JLabel("Order Page");
 
@@ -54,7 +53,6 @@ public class OrderPage {
 	private void initialize() {
 		
 		
-		P = new LinkedList();
 		t = new Tree();
 		
 		totalPrice = 0;
@@ -163,14 +161,23 @@ public class OrderPage {
 		btnConfirm.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) 
 			{
-				MainMenu window = new MainMenu();
-				Order order = new Order();
-				OrderHistory.q.addToQueue(order);
-				OrderHistory.q.outputQueue();
-				JOptionPane.showMessageDialog(null, "SUCCESS: Order Created! Order ID:" + order.getOrderId());
+				if(t.getSize() != 0)
+				{
+					MainMenu window = new MainMenu();
+					Order order = new Order();
+					OrderHistory.q.addToQueue(order);
+					OrderHistory.q.outputQueue();
+					JOptionPane.showMessageDialog(null, "SUCCESS: Order Created! Order ID:" + order.getOrderId());
+					
+					frmOrderPage.setVisible(false);
+					window.frmMainMenu.setVisible(true);
+				}
 				
-				frmOrderPage.setVisible(false);
-				window.frmMainMenu.setVisible(true);
+				else
+				{
+					JOptionPane.showMessageDialog(null, "ERROR: Order Is Empty!");
+				}
+				
 			}
 		});
 		btnConfirm.setFont(new Font("Arial", Font.BOLD, 18));

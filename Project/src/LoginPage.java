@@ -56,7 +56,7 @@ public class LoginPage {
 	private void initialize() {
 		users = new User[3]; 
 		
-		users[0]= new User("Khaled", "4444"); //Constant Values Because No Time For Database, Use Them To Enter
+		users[0] = new User("Khaled", "4444"); //Constant Values Because No Time For Database, Use Them To Enter
 		users[1] = new User("Basma", "333");
 		users[2] = new User("Adam", "22");
 		
